@@ -1,0 +1,10 @@
+me\blast\safecracker\NPCHandler.class
+me\blast\safecracker\Main.class
+me\blast\safecracker\inventories\providers\CheckerGUIProvider.class
+me\blast\safecracker\ChatEventListener.class
+me\blast\safecracker\inventories\AdminGUI.class
+me\blast\safecracker\inventories\InventoryWrapper.class
+me\blast\safecracker\inventories\providers\AdminGUIProvider.class
+me\blast\safecracker\commands\Commands.class
+me\blast\safecracker\files\Files.class
+me\blast\safecracker\inventories\CheckerGUI.class
