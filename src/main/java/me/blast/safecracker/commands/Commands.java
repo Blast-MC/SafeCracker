@@ -30,6 +30,18 @@ public class Commands implements CommandExecutor {
         }
         Player player = (Player) sender;
         if(cmd.getName().equalsIgnoreCase("safecracker")){
+            if(args.length == 0){
+                if(player.hasPermission("safecracker.admin")){
+                    player.sendMessage(Main.colorize("&cInvalid Arguments. [start, check, complete, claim, admin]"));
+                    return true;
+                }
+                if(player.hasPermission("safecracker.player")) {
+                    player.sendMessage(Main.colorize("&cInvalid Argument. [start, check, complete, claim]"));
+                    return true;
+                }
+                player.sendMessage("Error 404. Command not found.");
+                return true;
+            }
             if(player.hasPermission("safecracker.admin") && args[0].equalsIgnoreCase("admin")){
                 if(args.length >= 2) {
                     switch (args[1].toLowerCase()) {
@@ -67,10 +79,12 @@ public class Commands implements CommandExecutor {
                     }
                 }
                 player.sendMessage(Main.colorize("&cInvalid argument. [start, check, complete, claim]"));
+                return true;
             }
+            player.sendMessage(Main.colorize("Error 404. Command not found."));
             return true;
         }
-        return false;
+        return true;
     }
 
 }
