@@ -2,15 +2,16 @@ package me.blast.safecracker.commands;
 
 import me.blast.safecracker.Main;
 import me.blast.safecracker.NPCHandler;
-import me.blast.safecracker.files.Files;
+import me.blast.safecracker.commands.subcommands.*;
+import me.blast.safecracker.Files;
 import me.blast.safecracker.inventories.AdminGUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.io.IOException;
 
 public class Commands implements CommandExecutor {
 
@@ -19,6 +20,9 @@ public class Commands implements CommandExecutor {
     }
 
     NPCHandler NPCs = new NPCHandler();
+    public NPCHandler getNPCs(){
+        return NPCs;
+    }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(!(sender instanceof Player)){
@@ -27,42 +31,46 @@ public class Commands implements CommandExecutor {
         Player player = (Player) sender;
         if(cmd.getName().equalsIgnoreCase("safecracker")){
             if(player.hasPermission("safecracker.admin") && args[0].equalsIgnoreCase("admin")){
-                if(args[1].equalsIgnoreCase("edit")) {
-                    new AdminGUI().openAdminGUI(player);
-                    return true;
+                if(args.length >= 2) {
+                    switch (args[1].toLowerCase()) {
+                        case "edit":
+                            new AdminEdit(player);
+                            return true;
+                        case "create":
+                            new AdminCreate(player, args);
+                            return true;
+                        case "scores":
+                            new AdminScores(player);
+                            return true;
+                        default:
+                    }
                 }
-                if(args[1].equalsIgnoreCase("create")){
-                    NPCs.create(args[2], player.getLocation());
-                    return true;
-                }
+                player.sendMessage(Main.colorize("&cInvalid second argument. [edit, create]"));
+                return true;
             }
             if(player.hasPermission("safecracker.player")){
                 if(args.length >= 1){
                     switch(args[0].toLowerCase()){
                         case "start":
-                            break;
+                            new Start(player);
+                            return true;
                         case "check":
-                            break;
-                        case "complete":
-                            break;
+                            new Check(player);
+                            return true;
+                        case "solve":
+                            new Solve(player, args);
+                            return true;
                         case "claim":
-                            break;
-                        case "answer":
-                            break;
+                            new Claim(player);
+                            return true;
                         default:
                     }
                 }
-                player.sendMessage(Main.colorize("&4Invalid argument. [start, check, complete, claim]"));
+                player.sendMessage(Main.colorize("&cInvalid argument. [start, check, complete, claim]"));
             }
             return true;
         }
         return false;
-    }
-
-    public String getDate() {
-            Calendar currentDate = Calendar.getInstance();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MMM/dd HH:mm:ss");
-            return formatter.format(currentDate.getTime());
     }
 
 }

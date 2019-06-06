@@ -6,3 +6,4 @@ commands:
   safecracker:
     description: SafeCracker event command
     usage: /<command>
+    aliases: [sc]
