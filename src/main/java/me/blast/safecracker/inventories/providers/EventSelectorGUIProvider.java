@@ -62,6 +62,7 @@ public class EventSelectorGUIProvider extends EventSelectorGUI implements Invent
             contents.set(row, column, ClickableItem.of(item, e -> {
                 getFiles().configFile().set("currentEvent", ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
                 getFiles().saveConfig();
+                Main.getInstance().getFiles().changeCurrentEvent(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
                 new EventSelectorGUI().openEventSelectorGUI(player);
             } ));
             if(column != 7){
