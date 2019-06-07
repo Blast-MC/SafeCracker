@@ -88,7 +88,6 @@ public class SafeCracker extends JavaPlugin {
             File temp = new File(SafeCracker.getInstance().getDataFolder() + File.separator + file);
             if(temp.isDirectory()){
                 events.add(temp.getName());
-                log(file + "is directory");
             }
         }
         return events;
