@@ -1,6 +1,6 @@
 name: SafeCracker
 author: Blast
-main: me.blast.safecracker.Main
+main: me.blast.safecracker.SafeCracker
 version: 1.0
 commands:
   safecracker:

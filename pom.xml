@@ -39,8 +39,8 @@
     </build>
     <repositories>
         <repository>
-        <id>everything</id>
-        <url>http://repo.citizensnpcs.co/</url>
+            <id>everything</id>
+            <url>http://repo.citizensnpcs.co/</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>fr.minuskube.inv</groupId>
             <artifactId>smart-invs</artifactId>
-            <version>1.2.6</version>
+            <version>1.2.7</version>
         </dependency>
     </dependencies>
 

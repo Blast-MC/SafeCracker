@@ -3,7 +3,7 @@ package me.blast.safecracker.inventories.providers;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Files;
 import me.blast.safecracker.inventories.AdminGUI;
 import me.blast.safecracker.inventories.EventSelectorGUI;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class EventSelectorGUIProvider extends EventSelectorGUI implements InventoryProvider {
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
 
     @Override
@@ -29,14 +29,14 @@ public class EventSelectorGUIProvider extends EventSelectorGUI implements Invent
         //CREATE-NEW ITEM
         ItemStack create = nameItem(new ItemStack(Material.EMERALD_BLOCK), "&aCreate new event");
         contents.set(0, 4, ClickableItem.of(create, e -> {
-            Main.getInstance().getCEL().adminCreateEventMap.add(player.getUniqueId().toString());
+            SafeCracker.getInstance().getCEL().adminCreateEventMap.add(player.getUniqueId().toString());
             player.closeInventory();
             player.sendMessage(colorize("&3Please type the name of the new event you wish to create, or type '&ecancel&3' to exit."));
         }));
 
         //EVENT ITEMS
         ArrayList<ItemStack> items = new ArrayList<>();
-        for(String eventName : Main.getInstance().getEvents()){
+        for(String eventName : SafeCracker.getInstance().getEvents()){
             ItemStack event;
             if(eventName.equals(getFiles().configFile().get("currentEvent"))){
                 event = nameItem(new ItemStack(Material.ENCHANTED_BOOK),"&e" + eventName);

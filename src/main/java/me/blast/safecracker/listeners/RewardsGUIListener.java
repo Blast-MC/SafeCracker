@@ -1,7 +1,7 @@
 package me.blast.safecracker.listeners;
 
 import me.blast.safecracker.Files;
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class RewardsGUIListener implements Listener {
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
 
     @EventHandler
     public void savePlayerRewards(InventoryCloseEvent e){
-        if(!e.getInventory().getTitle().equals(Main.colorize("&3SafeCracker Rewards"))){
+        if(!e.getInventory().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards"))){
             return;
         }
         Player player = (Player) e.getPlayer();
@@ -35,7 +35,7 @@ public class RewardsGUIListener implements Listener {
 
     @EventHandler
     public void saveRewards(InventoryCloseEvent e){
-        if(!e.getInventory().getTitle().equals(Main.colorize("&3SafeCracker Rewards Edit"))){
+        if(!e.getInventory().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards Edit"))){
             return;
         }
         Player player = (Player) e.getPlayer();
@@ -48,7 +48,7 @@ public class RewardsGUIListener implements Listener {
         }
         getFiles().dataFile().set("rewards", itemArray);
         getFiles().saveData();
-        player.sendMessage(Main.colorize("&3Saved the rewards for the &e" + getFiles().configFile().get("currentEvent") + "&3 event."));
+        player.sendMessage(SafeCracker.colorize("&3Saved the rewards for the &e" + getFiles().configFile().get("currentEvent") + "&3 event."));
     }
 
 

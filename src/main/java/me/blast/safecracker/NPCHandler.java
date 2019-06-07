@@ -2,12 +2,9 @@ package me.blast.safecracker;
 
         import me.blast.safecracker.listeners.ChatEventListener;
         import net.citizensnpcs.api.CitizensAPI;
-        import net.citizensnpcs.api.event.NPCRightClickEvent;
         import net.citizensnpcs.api.npc.NPC;
         import org.bukkit.Location;
         import org.bukkit.entity.EntityType;
-        import org.bukkit.entity.Player;
-        import org.bukkit.event.EventHandler;
         import org.bukkit.event.Listener;
 
         import java.util.ArrayList;
@@ -15,10 +12,10 @@ package me.blast.safecracker;
 public class NPCHandler implements Listener {
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
     public ChatEventListener getCEL(){
-        return Main.getInstance().getCEL();
+        return SafeCracker.getInstance().getCEL();
     }
 
     public void create(String name, Location loc){

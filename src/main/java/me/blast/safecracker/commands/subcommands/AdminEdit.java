@@ -1,6 +1,6 @@
 package me.blast.safecracker.commands.subcommands;
 
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.commands.Commands;
 import me.blast.safecracker.inventories.AdminGUI;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -16,7 +16,7 @@ public class AdminEdit extends Commands {
             getFiles().changeCurrentEvent(player.getName() + "'s Event");
         }
         try {
-            getFiles().setupEventFiles(Main.getInstance());
+            getFiles().setupEventFiles(SafeCracker.getInstance());
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
