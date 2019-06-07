@@ -62,7 +62,9 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
                 lore.add("");
                 if(getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".correct") == null) {
                     lore.add(colorize("&3Answer:"));
-                    lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
+                    if(getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer") != null){
+                        lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
+                    }
                 }
                 else {
                     if(getFiles().playerFile(player.getUniqueId()).get(npcs + ".correct").equals("true")){
