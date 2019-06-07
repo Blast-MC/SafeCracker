@@ -1,6 +1,6 @@
 package me.blast.safecracker.inventories;
 
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Files;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +12,7 @@ public class InventoryWrapper {
 
     public ItemStack nameItem(ItemStack item, String name) {
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(Main.colorize("&r" + name));
+        meta.setDisplayName(SafeCracker.colorize("&r" + name));
         item.setItemMeta(meta);
         return item;
     }
@@ -64,7 +64,7 @@ public class InventoryWrapper {
     }
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
 
     public ItemStack goBackItem(){

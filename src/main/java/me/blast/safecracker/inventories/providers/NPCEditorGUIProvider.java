@@ -3,7 +3,7 @@ package me.blast.safecracker.inventories.providers;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.inventories.AdminGUI;
 import me.blast.safecracker.inventories.NPCEditorGUI;
 import net.citizensnpcs.api.CitizensAPI;
@@ -21,7 +21,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
 
     @Override
     public void init(Player player, InventoryContents contents) {
-        String npc = Main.getInstance().adminEdit.get(player.getUniqueId().toString());
+        String npc = SafeCracker.getInstance().adminEdit.get(player.getUniqueId().toString());
 
         //SKULL ITEM
         ItemStack skull = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e" + npc));
@@ -49,7 +49,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
         questionMeta.setLore(questionLore);
         question.setItemMeta(questionMeta);
         contents.set(1, 1, ClickableItem.of(question, e -> {
-            Main.getInstance().getCEL().adminChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".question");
+            SafeCracker.getInstance().getCEL().adminChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".question");
             player.closeInventory();
             player.sendMessage(colorize("&3Please type the question in the chat, or type '&ecancel&3' to exit."));
         }));
@@ -71,7 +71,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
         answersMeta.setLore(answersLore);
         answers.setItemMeta(answersMeta);
         contents.set(1, 3, ClickableItem.of(answers, e ->{
-            Main.getInstance().getCEL().adminAnswersChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".answers");
+            SafeCracker.getInstance().getCEL().adminAnswersChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".answers");
             player.closeInventory();
             player.sendMessage(colorize("&3Please type the answers in the chat separated by '&e||&3', or type '&ecancel' to exit."));
         }));
@@ -91,7 +91,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
         riddle.setItemMeta(riddleMeta);
         contents.set(1, 5, ClickableItem.of(riddle, e ->{
             player.closeInventory();
-            Main.getInstance().getCEL().adminChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".riddle");
+            SafeCracker.getInstance().getCEL().adminChatMap.put(player.getUniqueId().toString(), npc.toLowerCase() + ".riddle");
             player.sendMessage(colorize("&3Please type the riddle in the chat or type '&ecancel&3' to exit."));
         }));
 
@@ -121,14 +121,14 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
             if(e.isRightClick()){
                 player.closeInventory();
                 player.sendMessage(colorize("&3Please confirm this action by typing the name of the NPC you wish to delete or type '&ecancel&3' to exit."));
-                Main.getInstance().getCEL().adminDeleteChatMap.put(player.getUniqueId().toString(), npc);
+                SafeCracker.getInstance().getCEL().adminDeleteChatMap.put(player.getUniqueId().toString(), npc);
             }
             else{
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 15, 4);
             }
         }));
 
-        Main.getInstance().adminEdit.remove(player.getUniqueId().toString());
+        SafeCracker.getInstance().adminEdit.remove(player.getUniqueId().toString());
     }
 
     @Override

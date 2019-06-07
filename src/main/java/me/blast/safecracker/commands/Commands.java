@@ -1,22 +1,18 @@
 package me.blast.safecracker.commands;
 
-import me.blast.safecracker.Main;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.NPCHandler;
 import me.blast.safecracker.commands.subcommands.*;
 import me.blast.safecracker.Files;
-import me.blast.safecracker.inventories.AdminGUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
-
-import java.io.IOException;
 
 public class Commands implements CommandExecutor {
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
 
     NPCHandler NPCs = new NPCHandler();
@@ -32,11 +28,11 @@ public class Commands implements CommandExecutor {
         if(cmd.getName().equalsIgnoreCase("safecracker")){
             if(args.length == 0){
                 if(player.hasPermission("safecracker.admin")){
-                    player.sendMessage(Main.colorize("&cInvalid Arguments. [start, check, complete, claim, admin]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Arguments. [start, check, complete, claim, admin]"));
                     return true;
                 }
                 if(player.hasPermission("safecracker.player")) {
-                    player.sendMessage(Main.colorize("&cInvalid Argument. [start, check, complete, claim]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Argument. [start, check, complete, claim]"));
                     return true;
                 }
                 player.sendMessage("Error 404. Command not found.");
@@ -57,7 +53,7 @@ public class Commands implements CommandExecutor {
                         default:
                     }
                 }
-                player.sendMessage(Main.colorize("&cInvalid second argument. [edit, create]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create]"));
                 return true;
             }
             if(player.hasPermission("safecracker.player")){
@@ -78,10 +74,10 @@ public class Commands implements CommandExecutor {
                         default:
                     }
                 }
-                player.sendMessage(Main.colorize("&cInvalid argument. [start, check, complete, claim]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid argument. [start, check, complete, claim]"));
                 return true;
             }
-            player.sendMessage(Main.colorize("Error 404. Command not found."));
+            player.sendMessage(SafeCracker.colorize("Error 404. Command not found."));
             return true;
         }
         return true;

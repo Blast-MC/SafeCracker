@@ -23,11 +23,11 @@ public class Scores {
         }
         getFiles().scoreFile().set("scores", scores);
         getFiles().saveScore();
-        Main.getInstance().log(player.getDisplayName() + " has finished the Safe Cracker event with a score of " + score + "!");
+        SafeCracker.getInstance().log(player.getDisplayName() + " has finished the Safe Cracker event with a score of " + score + "!");
     }
 
     public Files getFiles(){
-        return Main.getInstance().getFiles();
+        return SafeCracker.getInstance().getFiles();
     }
 
 }

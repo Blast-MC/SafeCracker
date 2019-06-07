@@ -1,6 +1,5 @@
 package me.blast.safecracker;
 
-import me.blast.safecracker.Main;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -9,7 +8,6 @@ import org.bukkit.plugin.Plugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.UUID;
 
 public class Files {
@@ -47,7 +45,7 @@ public class Files {
         configFile().set("currentEvent", eventName);
         saveConfig();
         try {
-            setupEventFiles(Main.getInstance());
+            setupEventFiles(SafeCracker.getInstance());
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
@@ -68,7 +66,7 @@ public class Files {
         }
         dataConfig.load(dataFile);
         if(dataConfig.get("created") == null){
-            dataConfig.set("created", Main.getInstance().dateFormatter());
+            dataConfig.set("created", SafeCracker.getInstance().dateFormatter());
             dataConfig.save(dataFile);
         }
         if(dataConfig.get("riddle-answer") == null){
@@ -102,7 +100,7 @@ public class Files {
     public FileConfiguration scoreFile(){return scoreConfig;}
 
     public FileConfiguration tempDataFile(String event){
-        File tempDataFile = new File(Main.getInstance().getDataFolder() + File.separator + event + File.separator + "data.yml");
+        File tempDataFile = new File(SafeCracker.getInstance().getDataFolder() + File.separator + event + File.separator + "data.yml");
         FileConfiguration tempDataConfig = new YamlConfiguration();
         try {
             tempDataConfig.load(tempDataFile);
@@ -139,7 +137,7 @@ public class Files {
 
     public FileConfiguration playerFile(UUID uuid){
         String fileName = uuid.toString() + ".yml";
-        playerFile = new File(Main.getInstance().getDataFolder() + File.separator + currentEvent + File.separator + "playerData" + File.separator + fileName);
+        playerFile = new File(SafeCracker.getInstance().getDataFolder() + File.separator + currentEvent + File.separator + "playerData" + File.separator + fileName);
         if(!playerFile.exists()){
             try{
                 playerFile.createNewFile();
@@ -158,7 +156,7 @@ public class Files {
 
     public void savePlayerData(UUID uuid){
         String fileName = uuid.toString() + ".yml";
-        playerFile = new File(Main.getInstance().getDataFolder() + File.separator + currentEvent + File.separator + "playerData" + File.separator + fileName);
+        playerFile = new File(SafeCracker.getInstance().getDataFolder() + File.separator + currentEvent + File.separator + "playerData" + File.separator + fileName);
         try {
             playerConfig.save(playerFile);
         } catch (IOException e) {

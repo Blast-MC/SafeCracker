@@ -1,9 +1,0 @@
-name: SafeCracker
-author: Blast
-main: me.blast.safecracker.Main
-version: 1.0
-commands:
-  safecracker:
-    description: SafeCracker event command
-    usage: /<command>
-    aliases: [sc]
