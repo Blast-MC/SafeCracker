@@ -58,7 +58,7 @@ public class AdminGUIProvider extends AdminGUI implements InventoryProvider {
         contents.set(0, 2, ClickableItem.of(rewards, e -> new RewardsEditGUI(player)));
 
         //INFO ITEM
-        contents.set(0, 8, ClickableItem.empty(infoItem("Click on the skull of the NPC you wish to edit. To edit any physical attributes of the NPC, use Citizen's &c/npc edit&3.")));
+        contents.set(0, 8, ClickableItem.empty(infoItem("Click on the skull of the NPC you wish to edit. To edit any physical attributes of the NPC, use Citizen's &e/npc edit&3.")));
 
         //NPC ITEMS
         ArrayList<ItemStack> items = new ArrayList<>();
@@ -66,7 +66,11 @@ public class AdminGUIProvider extends AdminGUI implements InventoryProvider {
             if(npcs.equals("created") || npcs.equals("riddle-answer") || npcs.equals("commands-upon-solve") || npcs.equals("rewards")){
                 continue;
             }
+
             NPC npc = CitizensAPI.getNPCRegistry().getById((int) getFiles().dataFile().get(npcs + ".id"));
+            if(npc == null){
+                continue;
+            }
             ItemStack item = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e&l" + npc.getName()));
             ItemMeta meta = item.getItemMeta();
             ArrayList<String> lore = new ArrayList<>();
