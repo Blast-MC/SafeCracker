@@ -42,6 +42,9 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
                 continue;
             }
             NPC npc = CitizensAPI.getNPCRegistry().getById((int) getFiles().dataFile().get(npcs + ".id"));
+            if(npc == null){
+                continue;
+            }
             ItemStack item = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e&l" + npc.getName()));
             ItemMeta meta = item.getItemMeta();
             ArrayList<String> lore = new ArrayList<>();
@@ -62,9 +65,7 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
                 lore.add("");
                 if(getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".correct") == null) {
                     lore.add(colorize("&3Answer:"));
-                    if(getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer") != null){
-                        lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
-                    }
+                    lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
                 }
                 else {
                     if(getFiles().playerFile(player.getUniqueId()).get(npcs + ".correct").equals("true")){
