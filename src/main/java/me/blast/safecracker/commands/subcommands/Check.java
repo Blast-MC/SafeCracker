@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class Check extends Commands {
     public Check(Player player) {
         if(getFiles().playerFile(player.getUniqueId()).get("started") == null){
-            player.sendMessage(SafeCracker.colorize("&3You have not started the Safe Cracker event! Use '&c/safecracker start&3' to begin."));
+            player.sendMessage(SafeCracker.colorize("&3You have not started the Safe Cracker event! Use '&e/safecracker start&3' to begin."));
             return;
         }
         if(getFiles().playerFile(player.getUniqueId()).get("solved") != null){

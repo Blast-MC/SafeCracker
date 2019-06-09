@@ -50,6 +50,9 @@ public class Commands implements CommandExecutor {
                         case "scores":
                             new AdminScores(player);
                             return true;
+                        case "reload":
+                            new AdminReload(player);
+                            return true;
                         default:
                     }
                 }
