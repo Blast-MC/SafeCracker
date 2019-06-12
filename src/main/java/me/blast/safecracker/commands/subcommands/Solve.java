@@ -34,7 +34,7 @@ public class Solve {
         }
         getFiles().playerFile(player.getUniqueId()).set("solved", SafeCracker.getInstance().dateFormatter());
         getFiles().savePlayerData(player.getUniqueId());
-        player.sendMessage(SafeCracker.colorize("&3You correctly answered the Safe Cracker riddle! You score is &e" + SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformaterr((String) getFiles().playerFile(player.getUniqueId()).get("started")))));
+        player.sendMessage(SafeCracker.colorize("&3You correctly answered the Safe Cracker riddle! You score is &e" + SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformater((String) getFiles().playerFile(player.getUniqueId()).get("started")))));
         ArrayList<String> commands = new ArrayList<>((ArrayList<String>) getFiles().dataFile().get("commands-upon-solve"));
         for(String command : commands){
             command.replaceAll("&player", player.getName());
