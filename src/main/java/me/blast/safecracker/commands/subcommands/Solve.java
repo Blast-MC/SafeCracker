@@ -43,7 +43,7 @@ public class Solve {
             }
             Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
         }
-        new Scores(SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformaterr((String) getFiles().playerFile(player.getUniqueId()).get("started"))), player);
+        new Scores(SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformater((String) getFiles().playerFile(player.getUniqueId()).get("started"))), player);
 
     }
 }
