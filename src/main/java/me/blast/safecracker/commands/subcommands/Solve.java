@@ -37,11 +37,10 @@ public class Solve {
         player.sendMessage(SafeCracker.colorize("&3You correctly answered the Safe Cracker riddle! You score is &e" + SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformatter((String) getFiles().playerFile(player.getUniqueId()).get("started")))));
         ArrayList<String> commands = new ArrayList<>((ArrayList<String>) getFiles().dataFile().get("commands-upon-solve"));
         for(String command : commands){
-            command = command.replaceAll("&player", player.getName());
             if(command.substring(0, 0).equalsIgnoreCase("/")){
                 command = command.substring(1);
             }
-            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("&player", player.getName()));
         }
         new Scores(SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformatter((String) getFiles().playerFile(player.getUniqueId()).get("started"))), player);
 
