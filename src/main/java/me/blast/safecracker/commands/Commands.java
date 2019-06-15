@@ -28,11 +28,11 @@ public class Commands implements CommandExecutor {
         if(cmd.getName().equalsIgnoreCase("safecracker")){
             if(args.length == 0){
                 if(player.hasPermission("safecracker.admin")){
-                    player.sendMessage(SafeCracker.colorize("&cInvalid Arguments. [start, check, complete, claim, admin]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Arguments. [start, check, solve, claim, admin]"));
                     return true;
                 }
                 if(player.hasPermission("safecracker.player")) {
-                    player.sendMessage(SafeCracker.colorize("&cInvalid Argument. [start, check, complete, claim]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Argument. [start, check, solve, claim]"));
                     return true;
                 }
                 player.sendMessage("Error 404. Command not found.");
@@ -56,7 +56,7 @@ public class Commands implements CommandExecutor {
                         default:
                     }
                 }
-                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload]"));
                 return true;
             }
             if(player.hasPermission("safecracker.player")){
@@ -77,7 +77,7 @@ public class Commands implements CommandExecutor {
                         default:
                     }
                 }
-                player.sendMessage(SafeCracker.colorize("&cInvalid argument. [start, check, complete, claim]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid argument. [start, check, solve, claim]"));
                 return true;
             }
             player.sendMessage(SafeCracker.colorize("Error 404. Command not found."));
