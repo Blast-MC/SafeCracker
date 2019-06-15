@@ -66,7 +66,9 @@ public class AdminGUIProvider extends AdminGUI implements InventoryProvider {
             if(npcs.equals("created") || npcs.equals("riddle-answer") || npcs.equals("commands-upon-solve") || npcs.equals("rewards")){
                 continue;
             }
-
+            if(getFiles().dataFile().get(npcs + ".id") == null){
+                continue;
+            }
             NPC npc = CitizensAPI.getNPCRegistry().getById((int) getFiles().dataFile().get(npcs + ".id"));
             if(npc == null){
                 continue;
