@@ -64,7 +64,7 @@ public class SafeCracker extends JavaPlugin {
         return string.replaceAll("&", "§");
     }
 
-    void log(String string){
+    public void log(String string){
         getLogger().info(string);
     }
 

@@ -33,6 +33,12 @@ public class Files {
         }
 
         config.load(cFile);
+        if(config.get("tutorialNPCs") == null){
+            ArrayList<String> tutorialNPCs = new ArrayList<>();
+            tutorialNPCs.add("");
+            config.set("tutorialNPCs", tutorialNPCs);
+            config.save(cFile);
+        }
     }
 
     String currentEvent;

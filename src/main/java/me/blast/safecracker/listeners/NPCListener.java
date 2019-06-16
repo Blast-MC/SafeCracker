@@ -2,6 +2,7 @@ package me.blast.safecracker.listeners;
 
 import me.blast.safecracker.Files;
 import me.blast.safecracker.SafeCracker;
+import me.blast.safecracker.Tutorial;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +20,11 @@ public class NPCListener implements Listener {
     public void onNPCClick(NPCRightClickEvent event){
         int id = event.getNPC().getId();
         Player player = event.getClicker();
+        ArrayList<String> tutorialNPCs = new ArrayList<String>((ArrayList<String>) getFiles().configFile().get("tutorialNPCs"));
+        if(tutorialNPCs.contains(Integer.toString(id))){
+            new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*10);
+            return;
+        }
         for(String npc : getFiles().dataFile().getConfigurationSection("").getKeys(false)){
             if(npc.equals("created") || npc.equals("riddle-answer") || npc.equals("commands-upon-solve") || npc.equals("rewards")){
                 continue;

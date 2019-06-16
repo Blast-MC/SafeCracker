@@ -5,6 +5,7 @@ import me.blast.safecracker.NPCHandler;
 import me.blast.safecracker.Tutorial;
 import me.blast.safecracker.commands.subcommands.*;
 import me.blast.safecracker.Files;
+import me.blast.safecracker.commands.subcommands.admin.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -43,21 +44,27 @@ public class Commands implements CommandExecutor {
                 if(args.length >= 2) {
                     switch (args[1].toLowerCase()) {
                         case "edit":
-                            new AdminEdit(player);
+                            new Edit(player);
                             return true;
                         case "create":
-                            new AdminCreate(player, args);
+                            new Create(player, args);
                             return true;
                         case "scores":
-                            new AdminScores(player);
+                            new Scores(player);
                             return true;
                         case "reload":
-                            new AdminReload(player);
+                            new Reload(player);
+                            return true;
+                        case "settutorial":
+                            new SetTutorial(player, args);
+                            return true;
+                        case "removetutorial":
+                            new RemoveTutorial(player, args);
                             return true;
                         default:
                     }
                 }
-                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload, settutorial, removetutorial]"));
                 return true;
             }
             if(player.hasPermission("safecracker.player")){
@@ -89,4 +96,14 @@ public class Commands implements CommandExecutor {
         }
         return true;
     }
+
+    public static boolean isInt(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
 }
