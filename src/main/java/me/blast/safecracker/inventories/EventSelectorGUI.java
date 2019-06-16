@@ -4,7 +4,7 @@ import fr.minuskube.inv.SmartInventory;
 import me.blast.safecracker.inventories.providers.EventSelectorGUIProvider;
 import org.bukkit.entity.Player;
 
-public class EventSelectorGUI extends InventoryWrapper {
+public class EventSelectorGUI extends InventoryUtils {
 
     public void openEventSelectorGUI(Player player){
         SmartInventory INV = SmartInventory.builder()

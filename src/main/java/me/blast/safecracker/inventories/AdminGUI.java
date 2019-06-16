@@ -4,7 +4,7 @@ import fr.minuskube.inv.SmartInventory;
 import me.blast.safecracker.inventories.providers.AdminGUIProvider;
 import org.bukkit.entity.Player;
 
-public class AdminGUI extends InventoryWrapper{
+public class AdminGUI extends InventoryUtils {
 
     public void openAdminGUI(Player player){
         SmartInventory INV = SmartInventory.builder()

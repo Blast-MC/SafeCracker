@@ -2,6 +2,7 @@ package me.blast.safecracker.commands;
 
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.NPCHandler;
+import me.blast.safecracker.Tutorial;
 import me.blast.safecracker.commands.subcommands.*;
 import me.blast.safecracker.Files;
 import org.bukkit.command.Command;
@@ -28,11 +29,11 @@ public class Commands implements CommandExecutor {
         if(cmd.getName().equalsIgnoreCase("safecracker")){
             if(args.length == 0){
                 if(player.hasPermission("safecracker.admin")){
-                    player.sendMessage(SafeCracker.colorize("&cInvalid Arguments. [start, check, solve, claim, admin]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Arguments. [tutorial, start, check, solve, claim, admin]"));
                     return true;
                 }
                 if(player.hasPermission("safecracker.player")) {
-                    player.sendMessage(SafeCracker.colorize("&cInvalid Argument. [start, check, solve, claim]"));
+                    player.sendMessage(SafeCracker.colorize("&cInvalid Argument. [tutorial, start, check, solve, claim]"));
                     return true;
                 }
                 player.sendMessage("Error 404. Command not found.");
@@ -74,10 +75,13 @@ public class Commands implements CommandExecutor {
                         case "claim":
                             new Claim(player);
                             return true;
+                        case "tutorial":
+                            new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*10);
+                            return true;
                         default:
                     }
                 }
-                player.sendMessage(SafeCracker.colorize("&cInvalid argument. [start, check, solve, claim]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid argument. [tutorial, start, check, solve, claim]"));
                 return true;
             }
             player.sendMessage(SafeCracker.colorize("Error 404. Command not found."));

@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class RewardsGUI extends InventoryWrapper {
+public class RewardsGUI extends InventoryUtils {
 
     public RewardsGUI(Player player){
         ArrayList<ItemStack> items;

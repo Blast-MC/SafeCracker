@@ -3,14 +3,13 @@ package me.blast.safecracker.inventories;
 import fr.minuskube.inv.SmartInventory;
 import me.blast.safecracker.inventories.providers.CheckerGUIProvider;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
-public class CheckerGUI extends InventoryWrapper{
+public class CheckerGUI extends InventoryUtils {
 
     public void openCheckerGUI(Player player){
+        checkAnswers(player);
         SmartInventory INV = SmartInventory.builder()
                 .id("checkerGUI")
                 .provider(new CheckerGUIProvider())

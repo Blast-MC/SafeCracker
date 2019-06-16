@@ -2,6 +2,8 @@ package me.blast.safecracker.listeners;
 
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Files;
+import me.blast.safecracker.Tutorial;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -9,6 +11,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class ChatEventListener implements Listener {
 
@@ -17,6 +20,7 @@ public class ChatEventListener implements Listener {
     public HashMap<String, String> adminAnswersChatMap = new HashMap<>();
     public HashMap<String, String> adminDeleteChatMap = new HashMap<>();
     public ArrayList<String> adminCreateEventMap = new ArrayList<>();
+    public ArrayList<String> tutorialMap = new ArrayList<>();
 
     public Files getFiles(){
         return SafeCracker.getInstance().getFiles();
@@ -101,6 +105,13 @@ public class ChatEventListener implements Listener {
             adminCreateEventMap.remove(uuid);
             event.getPlayer().sendMessage(SafeCracker.colorize("&3Successfully created the new event '&e" + event.getMessage() + "&3' and set it as the current event!"));
             event.setCancelled(true);
+            return;
+        }
+        if(tutorialMap.contains(uuid)){
+            event.setCancelled(true);
+            tutorialMap.remove(uuid);
+            UUID playerUUID = UUID.fromString(uuid);
+            new Tutorial(Bukkit.getPlayer(playerUUID), 6).runTaskTimer(SafeCracker.getInstance(), 10, 20*10);
             return;
         }
     }

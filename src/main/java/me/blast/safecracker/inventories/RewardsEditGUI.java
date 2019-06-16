@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class RewardsEditGUI extends InventoryWrapper {
+public class RewardsEditGUI extends InventoryUtils {
 
     public RewardsEditGUI(Player player){
         Inventory INV = Bukkit.createInventory(null, 54, colorize("&3SafeCracker Rewards Edit"));
