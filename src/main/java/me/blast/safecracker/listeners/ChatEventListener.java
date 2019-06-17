@@ -1,8 +1,9 @@
 package me.blast.safecracker.listeners;
 
-import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Files;
+import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Tutorial;
+import me.blast.safecracker.inventories.AdminGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -61,6 +62,7 @@ public class ChatEventListener implements Listener {
             event.getPlayer().sendMessage(SafeCracker.colorize("&3You responded with: &e'" + event.getMessage() + "' &3Saved!"));
             adminChatMap.remove(uuid);
             event.setCancelled(true);
+            new AdminGUI().openAdminGUI(event.getPlayer());
             return;
         }
         if(adminAnswersChatMap.containsKey(uuid)){
@@ -75,6 +77,7 @@ public class ChatEventListener implements Listener {
             }
             adminAnswersChatMap.remove(uuid);
             event.setCancelled(true);
+            new AdminGUI().openAdminGUI(event.getPlayer());
             return;
         }
         if(adminDeleteChatMap.containsKey(uuid)){
@@ -84,12 +87,14 @@ public class ChatEventListener implements Listener {
                 event.getPlayer().sendMessage(SafeCracker.colorize(    "&3Successfully deleted the '&e" + adminDeleteChatMap.get(uuid) + "&3' NPC. You may have to remove it physically by doing /npc remove."));
                 adminDeleteChatMap.remove(uuid);
                 event.setCancelled(true);
+                new AdminGUI().openAdminGUI(event.getPlayer());
                 return;
             }
             else {
                 event.getPlayer().sendMessage(SafeCracker.colorize("&3Your reponse did not match. &eCanceling."));
                 adminDeleteChatMap.remove(uuid);
                 event.setCancelled(true);
+                new AdminGUI().openAdminGUI(event.getPlayer());
                 return;
             }
         }
@@ -105,6 +110,7 @@ public class ChatEventListener implements Listener {
             adminCreateEventMap.remove(uuid);
             event.getPlayer().sendMessage(SafeCracker.colorize("&3Successfully created the new event '&e" + event.getMessage() + "&3' and set it as the current event!"));
             event.setCancelled(true);
+            new AdminGUI().openAdminGUI(event.getPlayer());
             return;
         }
         if(tutorialMap.contains(uuid)){
