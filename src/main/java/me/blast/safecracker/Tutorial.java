@@ -14,7 +14,7 @@ public class Tutorial extends BukkitRunnable {
     public void run(){
         player.sendMessage(SafeCracker.colorize("&e[+] " + strings[i]));
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 2);
-        if (i == 5) {
+        if (i == 6) {
             SafeCracker.getInstance().getCEL().tutorialMap.add(player.getUniqueId().toString());
             this.cancel();
         }
@@ -29,6 +29,7 @@ public class Tutorial extends BukkitRunnable {
             "&3This will show you the basics of how to play the game.",
             "&3Safe Cracker is a &etrivia game &3that will test your knowledge about the server.",
             "&3You will start by searching for &eNPCs &3around the map, and answering the &equestions &3they will ask.",
+            "&3When you find an NPC, &eright click &3it to reveal the question.",
             "&3Answering the questions is easy. All you have to do is &etype your answers in chat&3.",
             "&3To exit answering, you simply type '&ecancel&3' in chat. Go ahead! Try it out now by &etyping whatever you want in chat&3.",
             "&eGreat! &3You now know how to answer questions. Next, you will check your answers to gain clues towards the &efinal riddle&3.",
