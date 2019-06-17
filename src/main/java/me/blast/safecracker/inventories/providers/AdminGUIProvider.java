@@ -63,9 +63,6 @@ public class AdminGUIProvider extends AdminGUI implements InventoryProvider {
         //NPC ITEMS
         ArrayList<ItemStack> items = new ArrayList<>();
         for(String npcs : getFiles().dataFile().getConfigurationSection("").getKeys(false)){
-            if(npcs.equals("created") || npcs.equals("riddle-answer") || npcs.equals("commands-upon-solve") || npcs.equals("rewards")){
-                continue;
-            }
             if(getFiles().dataFile().get(npcs + ".id") == null){
                 continue;
             }

@@ -27,7 +27,7 @@ public class NPCListener implements Listener {
             return;
         }
         for(String npc : getFiles().dataFile().getConfigurationSection("").getKeys(false)){
-            if(npc.equals("created") || npc.equals("riddle-answer") || npc.equals("commands-upon-solve") || npc.equals("rewards")){
+            if(getFiles().dataFile().get(npc + ".id") == null){
                 continue;
             }
             if(id == (int) getFiles().dataFile().get(npc + ".id")){

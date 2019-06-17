@@ -38,7 +38,7 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
         ArrayList<ItemStack> foundItems = new ArrayList<>();
         ArrayList<ItemStack> notFoundItems = new ArrayList<>();
         for(String npcs : getFiles().dataFile().getConfigurationSection("").getKeys(false)){
-            if(npcs.equals("created") || npcs.equals("riddle-answer") || npcs.equals("commands-upon-solve") || npcs.equals("rewards")){
+            if(getFiles().dataFile().get(npcs + ".id") == null){
                 continue;
             }
             NPC npc = CitizensAPI.getNPCRegistry().getById((int) getFiles().dataFile().get(npcs + ".id"));

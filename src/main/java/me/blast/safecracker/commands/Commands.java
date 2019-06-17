@@ -61,10 +61,13 @@ public class Commands implements CommandExecutor {
                         case "removetutorial":
                             new RemoveTutorial(player, args);
                             return true;
+                        case "region":
+                            new Region(player, args);
+                            return true;
                         default:
                     }
                 }
-                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload, settutorial, removetutorial]"));
+                player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload, settutorial, removetutorial, region]"));
                 return true;
             }
             if(player.hasPermission("safecracker.player")){

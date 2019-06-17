@@ -85,6 +85,10 @@ public class Files {
             dataConfig.set("commands-upon-solve", commands);
             dataConfig.save(dataFile);
         }
+        if(dataConfig.get("main-region") == null){
+            dataConfig.set("main-region", "");
+            dataConfig.save(dataFile);
+        }
 
         scoreFile = new File(plugin.getDataFolder() + File.separator + currentEvent + File.separator + "scores.yml");
         scoreConfig = new YamlConfiguration();
