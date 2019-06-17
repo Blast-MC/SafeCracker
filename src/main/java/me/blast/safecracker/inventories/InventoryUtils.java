@@ -41,7 +41,7 @@ public class InventoryUtils {
     public ArrayList<String> loreBuilder(String color, String string){
         ArrayList<String> lore = new ArrayList<>();
         if(string == null){
-            lore.add("");
+            lore.add(colorize(color + "null"));
             return lore;
         }
         int index = 35;
