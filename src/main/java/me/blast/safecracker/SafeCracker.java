@@ -30,6 +30,8 @@ public class SafeCracker extends JavaPlugin {
 
     public HashMap<String, String> adminEdit = new HashMap<>();
 
+    public ArrayList<String> playersInTutorial = new ArrayList<>();
+
     @Override
     public void onEnable(){
         Commands commands = new Commands();
@@ -115,6 +117,4 @@ public class SafeCracker extends JavaPlugin {
         Duration duration = Duration.between(now, localDateTime);
         return Math.abs(duration.getSeconds() - 1);
     }
-
-
 }

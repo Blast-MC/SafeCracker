@@ -21,7 +21,8 @@ public class NPCListener implements Listener {
         int id = event.getNPC().getId();
         Player player = event.getClicker();
         ArrayList<String> tutorialNPCs = new ArrayList<String>((ArrayList<String>) getFiles().configFile().get("tutorialNPCs"));
-        if(tutorialNPCs.contains(Integer.toString(id))){
+        if(tutorialNPCs.contains(Integer.toString(id)) && !SafeCracker.getInstance().playersInTutorial.contains(player.getUniqueId().toString())){
+            SafeCracker.getInstance().playersInTutorial.add(player.getUniqueId().toString());
             new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*10);
             return;
         }

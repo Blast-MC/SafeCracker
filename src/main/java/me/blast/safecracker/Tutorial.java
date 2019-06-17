@@ -12,13 +12,14 @@ public class Tutorial extends BukkitRunnable {
         this.player = player;
     }
     public void run(){
-        player.sendMessage(SafeCracker.colorize(strings[i]));
+        player.sendMessage(SafeCracker.colorize("&e[+] " + strings[i]));
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 2);
         if (i == 5) {
             SafeCracker.getInstance().getCEL().tutorialMap.add(player.getUniqueId().toString());
             this.cancel();
         }
         if(i == strings.length -1){
+            SafeCracker.getInstance().playersInTutorial.remove(player.getUniqueId().toString());
             this.cancel();
         }
         i++;
@@ -35,6 +36,6 @@ public class Tutorial extends BukkitRunnable {
             "&eClues &3will be applied to the lore in the GUI, so check there frequently for &ehints towards the final answer&3.",
             "&3Once you feel like you have correctly solved the riddle, you can use &c/safecracker solve <answer> &3to solve.",
             "&3If you are correct, you will be able to claim your reward using &c/safecracker claim&3.",
-            "&3Once you are ready, run &c/safecracker start &3to begin playing &eSafe Cracker&3!"
+            "&3Once you are ready, run &c/safecracker start &3to begin playing &eSafe Cracker&3! To access this tutorial at any time, use &c/safecracker tutorial&3."
     };
 }
