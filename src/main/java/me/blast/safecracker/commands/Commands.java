@@ -1,10 +1,13 @@
 package me.blast.safecracker.commands;
 
-import me.blast.safecracker.SafeCracker;
-import me.blast.safecracker.NPCHandler;
-import me.blast.safecracker.Tutorial;
-import me.blast.safecracker.commands.subcommands.*;
 import me.blast.safecracker.Files;
+import me.blast.safecracker.NPCHandler;
+import me.blast.safecracker.SafeCracker;
+import me.blast.safecracker.Tutorial;
+import me.blast.safecracker.commands.subcommands.Check;
+import me.blast.safecracker.commands.subcommands.Claim;
+import me.blast.safecracker.commands.subcommands.Solve;
+import me.blast.safecracker.commands.subcommands.Start;
 import me.blast.safecracker.commands.subcommands.admin.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -86,6 +89,10 @@ public class Commands implements CommandExecutor {
                             new Claim(player);
                             return true;
                         case "tutorial":
+                            if(SafeCracker.getInstance().playersInTutorial.contains(player.getUniqueId().toString())){
+                                return true;
+                            }
+                            SafeCracker.getInstance().playersInTutorial.add(player.getUniqueId().toString());
                             new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*10);
                             return true;
                         default:
