@@ -73,7 +73,7 @@ public class Commands implements CommandExecutor {
                 player.sendMessage(SafeCracker.colorize("&cInvalid second argument. [edit, create, reload, settutorial, removetutorial, region]"));
                 return true;
             }
-            if(player.hasPermission("safecracker.player")){
+            if(player.hasPermission("safecracker.player") || player.hasPermission("safecracker.admin")){
                 if(args.length >= 1){
                     switch(args[0].toLowerCase()){
                         case "start":
