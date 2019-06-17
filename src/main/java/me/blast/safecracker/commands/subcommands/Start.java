@@ -14,7 +14,7 @@ public class Start extends Commands {
         getFiles().playerFile(player.getUniqueId()).set("started", SafeCracker.getInstance().dateFormatter());
         getFiles().savePlayerData(player.getUniqueId());
         if(!getFiles().dataFile().get("main-region").equals("")){
-            SafeCracker.getInstance().getServer().dispatchCommand(SafeCracker.getInstance().getServer().getConsoleSender(), "region addMember " + getFiles().dataFile().get("main-region") + " " + player.getName());
+            SafeCracker.getInstance().getServer().dispatchCommand(SafeCracker.getInstance().getServer().getConsoleSender(), "region addMember " + getFiles().dataFile().get("main-region") + " " + player.getName() + "-w " + player.getLocation().getWorld().getName());
         }
         player.sendMessage(SafeCracker.colorize("&3You have started the Safe Cracker event!"));
     }
