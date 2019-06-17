@@ -1,7 +1,7 @@
 package me.blast.safecracker.inventories;
 
-import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Files;
+import me.blast.safecracker.SafeCracker;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -40,6 +40,10 @@ public class InventoryUtils {
 
     public ArrayList<String> loreBuilder(String color, String string){
         ArrayList<String> lore = new ArrayList<>();
+        if(string == null){
+            lore.add("");
+            return lore;
+        }
         int index = 35;
         while(string.length() >= 35){
             if(index >= string.length()){
