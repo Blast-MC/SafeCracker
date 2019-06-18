@@ -76,7 +76,11 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
                     }
                     else {
                         lore.add(colorize("&3Answer: &c✘"));
-                        lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
+                        if (getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer") == null) {
+                            lore.addAll(loreBuilder("&7&l", "Unanswered"));
+                        } else {
+                            lore.addAll(loreBuilder("&r", (String) getFiles().playerFile(player.getUniqueId()).get(npc.getName().toLowerCase() + ".answer")));
+                        }
                     }
                 }
                 lore.add("");
