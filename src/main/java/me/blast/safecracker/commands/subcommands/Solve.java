@@ -37,6 +37,9 @@ public class Solve {
         player.sendMessage(SafeCracker.colorize("&3You correctly answered the Safe Cracker riddle! You score is &e" + SafeCracker.getInstance().timeSince(SafeCracker.getInstance().dateDeformatter((String) getFiles().playerFile(player.getUniqueId()).get("started")))));
         ArrayList<String> commands = new ArrayList<>((ArrayList<String>) getFiles().dataFile().get("commands-upon-solve"));
         for(String command : commands){
+            if(command.equals("")){
+                continue;
+            }
             if(command.substring(0, 0).equalsIgnoreCase("/")){
                 command = command.substring(1);
             }

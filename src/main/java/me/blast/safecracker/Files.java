@@ -85,8 +85,10 @@ public class Files {
             dataConfig.set("commands-upon-solve", commands);
             dataConfig.save(dataFile);
         }
-        if(dataConfig.get("main-region") == null){
-            dataConfig.set("main-region", "");
+        if(dataConfig.get("commands-upon-start") == null){
+            ArrayList<String> commands = new ArrayList<>();
+            commands.add("");
+            dataConfig.set("commands-upon-start", "");
             dataConfig.save(dataFile);
         }
 

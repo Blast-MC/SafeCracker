@@ -2,7 +2,10 @@ package me.blast.safecracker.commands.subcommands;
 
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.commands.Commands;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
 
 public class Start extends Commands {
 
@@ -13,8 +16,15 @@ public class Start extends Commands {
         }
         getFiles().playerFile(player.getUniqueId()).set("started", SafeCracker.getInstance().dateFormatter());
         getFiles().savePlayerData(player.getUniqueId());
-        if(!getFiles().dataFile().get("main-region").equals("")){
-            SafeCracker.getInstance().getServer().dispatchCommand(SafeCracker.getInstance().getServer().getConsoleSender(), "region addMember " + getFiles().dataFile().get("main-region") + " " + player.getName() + " -w " + player.getLocation().getWorld().getName());
+        ArrayList<String> commands = new ArrayList<>((ArrayList<String>) getFiles().dataFile().get("commands-upon-start"));
+        for(String command : commands){
+            if(command.equals("")){
+                continue;
+            }
+            if(command.substring(0, 0).equalsIgnoreCase("/")){
+                command = command.substring(1);
+            }
+            Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command.replaceAll("&player", player.getName()));
         }
         player.sendMessage(SafeCracker.colorize("&3You have started the Safe Cracker event!"));
     }
