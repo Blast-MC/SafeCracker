@@ -79,26 +79,34 @@ public class Files {
             dataConfig.set("riddle-answer", "");
             dataConfig.save(dataFile);
         }
-        if(dataConfig.get("commands-upon-solve") != null && dataConfig.get("commands-upon-solve").equals("")){
-            dataConfig.set("commands-upon-solve", null);
-            dataConfig.save(dataFile);
-            SafeCracker.getInstance().log("'commands-upon-solve' was not a list of commands in the data.yml. Fixing.");
-        }
-        if(dataConfig.get("commands-upon-solve") == null){
-            ArrayList<String> commands = new ArrayList<>();
-            commands.add("");
-            dataConfig.set("commands-upon-solve", commands);
-            dataConfig.save(dataFile);
-        }
-        if(dataConfig.get("commands-upon-start") != null && dataConfig.get("commands-upon-start").equals("")){
-            dataConfig.set("commands-upon-start", null);
-            dataConfig.save(dataFile);
-            SafeCracker.getInstance().log("'commands-upon-start' was not a list of commands in the data.yml. Fixing.");
+        if(dataConfig.get("commands-upon-start") != null){
+            try {
+                ArrayList<String> arrayList = new ArrayList<>((ArrayList<String>) dataConfig.get("commands-upon-start"));
+            } catch (Exception e){
+                SafeCracker.getInstance().log("'commands-upon-start' was not a list of commands in the data.yml. Fixing.");
+                dataConfig.set("commands-upon-start", null);
+                dataConfig.save(dataFile);
+            }
         }
         if(dataConfig.get("commands-upon-start") == null){
             ArrayList<String> commands = new ArrayList<>();
             commands.add("");
             dataConfig.set("commands-upon-start", commands);
+            dataConfig.save(dataFile);
+        }
+        if(dataConfig.get("commands-upon-solve") != null){
+            try {
+                ArrayList<String> arrayList = new ArrayList<>((ArrayList<String>) dataConfig.get("commands-upon-solve"));
+            } catch (Exception e){
+                SafeCracker.getInstance().log("'commands-upon-solve' was not a list of commands in the data.yml. Fixing.");
+                dataConfig.set("commands-upon-solve", null);
+                dataConfig.save(dataFile);
+            }
+        }
+        if(dataConfig.get("commands-upon-solve") == null){
+            ArrayList<String> commands = new ArrayList<>();
+            commands.add("");
+            dataConfig.set("commands-upon-solve", commands);
             dataConfig.save(dataFile);
         }
 
