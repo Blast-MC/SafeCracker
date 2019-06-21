@@ -50,7 +50,7 @@ public class NPCListener implements Listener {
                     getFiles().playerFile(player.getUniqueId()).set(npc + ".found", SafeCracker.getInstance().dateFormatter());
                     getFiles().savePlayerData(player.getUniqueId());
                 }
-                SafeCracker.getInstance().getCEL().playerChatMap.put(event.getClicker().getUniqueId().toString(), npc);
+                SafeCracker.getInstance().getCEL().playerChatMap.put(event.getClicker().getUniqueId().toString(), event.getNPC().getName());
                 break;
             }
         }

@@ -4,6 +4,7 @@ import me.blast.safecracker.Files;
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Tutorial;
 import me.blast.safecracker.inventories.AdminGUI;
+import me.blast.safecracker.inventories.CheckerGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,11 +48,16 @@ public class ChatEventListener implements Listener {
             return;
         }
         if(playerChatMap.containsKey(uuid)){
-            getFiles().playerFile(event.getPlayer().getUniqueId()).set(playerChatMap.get(uuid) + ".answer", event.getMessage());
+            String npc = playerChatMap.get(uuid).toLowerCase();
+            getFiles().playerFile(event.getPlayer().getUniqueId()).set(npc + ".answer", event.getMessage());
             getFiles().savePlayerData(event.getPlayer().getUniqueId());
-            getFiles().playerFile(event.getPlayer().getUniqueId()).set(playerChatMap.get(uuid) + ".correct", null);
+            getFiles().playerFile(event.getPlayer().getUniqueId()).set(npc + ".correct", null);
             getFiles().savePlayerData(event.getPlayer().getUniqueId());
-            event.getPlayer().sendMessage(SafeCracker.colorize("&3You answered: &e'" + event.getMessage() + "'"));
+            if(new CheckerGUI().isCorrect(event.getMessage(), npc)){
+                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&e " + correctResponses[(int) Math.ceil(Math.random() * correctResponses.length - 1)]));
+            } else {
+                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&e " + wrongResponses[(int) Math.ceil(Math.random() * wrongResponses.length - 1)]));
+            }
             playerChatMap.remove(uuid);
             event.setCancelled(true);
             return;
@@ -122,4 +128,17 @@ public class ChatEventListener implements Listener {
         }
     }
 
+    public String[] correctResponses = {
+            "Wow! That's correct!",
+            "You just answered correctly!",
+            "Amazing job. That's right!",
+            "That's right! Wooooo!"
+            };
+
+    public String[] wrongResponses = {
+            "Sadly, that's not right.",
+            "That answer isn't correct; try again.",
+            "You gave me a wrong response. Maybe try again?",
+            "That's incorrect, but I believe in you!"
+    };
 }
