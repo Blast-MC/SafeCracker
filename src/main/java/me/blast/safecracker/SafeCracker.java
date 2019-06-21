@@ -2,6 +2,7 @@ package me.blast.safecracker;
 
 import me.blast.safecracker.commands.Commands;
 import me.blast.safecracker.listeners.ChatEventListener;
+import me.blast.safecracker.listeners.DeleteNPCListener;
 import me.blast.safecracker.listeners.NPCListener;
 import me.blast.safecracker.listeners.RewardsGUIListener;
 import org.bukkit.Bukkit;
@@ -52,6 +53,7 @@ public class SafeCracker extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new NPCListener(), this);
         Bukkit.getPluginManager().registerEvents(CEL, this);
         Bukkit.getPluginManager().registerEvents(new RewardsGUIListener(), this);
+        Bukkit.getPluginManager().registerEvents(new DeleteNPCListener(), this);
     }
 
     @Override

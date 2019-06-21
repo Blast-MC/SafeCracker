@@ -1,10 +1,13 @@
 package me.blast.safecracker.listeners;
 
 import me.blast.safecracker.Files;
+import me.blast.safecracker.NPCs.DeleteNPC;
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Tutorial;
 import me.blast.safecracker.inventories.AdminGUI;
 import me.blast.safecracker.inventories.CheckerGUI;
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -88,16 +91,18 @@ public class ChatEventListener implements Listener {
         }
         if(adminDeleteChatMap.containsKey(uuid)){
             if(event.getMessage().equals(adminDeleteChatMap.get(uuid))){
+                NPC npc = CitizensAPI.getNPCRegistry().getById((int) getFiles().dataFile().get(event.getMessage().toLowerCase() + ".id"));
+                new DeleteNPC(npc).runTaskTimer(SafeCracker.getInstance(), 0, 0);
                 getFiles().dataFile().set(adminDeleteChatMap.get(uuid).toLowerCase(), null);
                 getFiles().saveData();
-                event.getPlayer().sendMessage(SafeCracker.colorize(    "&3Successfully deleted the '&e" + adminDeleteChatMap.get(uuid) + "&3' NPC. You may have to remove it physically by doing /npc remove."));
                 adminDeleteChatMap.remove(uuid);
                 event.setCancelled(true);
+                event.getPlayer().sendMessage(SafeCracker.colorize(    "&3Successfully deleted the '&e" + event.getMessage() + "&3' NPC. You may have to remove it physically by doing /npc remove."));
                 new AdminGUI().openAdminGUI(event.getPlayer());
                 return;
             }
             else {
-                event.getPlayer().sendMessage(SafeCracker.colorize("&3Your reponse did not match. &eCanceling."));
+                event.getPlayer().sendMessage(SafeCracker.colorize("&3Your response did not match. &eCanceling."));
                 adminDeleteChatMap.remove(uuid);
                 event.setCancelled(true);
                 new AdminGUI().openAdminGUI(event.getPlayer());

@@ -1,7 +1,7 @@
 package me.blast.safecracker.commands;
 
 import me.blast.safecracker.Files;
-import me.blast.safecracker.NPCHandler;
+import me.blast.safecracker.NPCs.NPCHandler;
 import me.blast.safecracker.SafeCracker;
 import me.blast.safecracker.Tutorial;
 import me.blast.safecracker.commands.subcommands.*;
