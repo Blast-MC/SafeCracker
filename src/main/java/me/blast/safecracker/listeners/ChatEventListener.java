@@ -128,7 +128,7 @@ public class ChatEventListener implements Listener {
             event.setCancelled(true);
             tutorialMap.remove(uuid);
             UUID playerUUID = UUID.fromString(uuid);
-            new Tutorial(Bukkit.getPlayer(playerUUID), 7).runTaskTimer(SafeCracker.getInstance(), 10, 20*10);
+            new Tutorial(Bukkit.getPlayer(playerUUID), 6).runTaskTimer(SafeCracker.getInstance(), 10, 20*7);
             return;
         }
     }

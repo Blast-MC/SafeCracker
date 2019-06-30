@@ -96,7 +96,7 @@ public class Commands implements CommandExecutor {
                                 return true;
                             }
                             SafeCracker.getInstance().playersInTutorial.add(player.getUniqueId().toString());
-                            new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*10);
+                            new Tutorial(player, 0).runTaskTimer(SafeCracker.getInstance(), 0, 20*6);
                             return true;
                         case "hint":
                             new Hint(player);

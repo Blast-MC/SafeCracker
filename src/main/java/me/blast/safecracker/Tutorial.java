@@ -12,9 +12,9 @@ public class Tutorial extends BukkitRunnable {
         this.player = player;
     }
     public void run(){
-        player.sendMessage(SafeCracker.colorize("&e[+] " + strings[i]));
+        player.sendMessage(SafeCracker.colorize("&e[+] " + strings[i] + " &e(" + (i+1) + "/" + strings.length + ")" ));
         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 2);
-        if (i == 6) {
+        if (i == 5) {
             SafeCracker.getInstance().getCEL().tutorialMap.add(player.getUniqueId().toString());
             this.cancel();
         }
@@ -25,14 +25,14 @@ public class Tutorial extends BukkitRunnable {
         i++;
     }
     String[] strings = {
-            "&3Welcome to the &eSafe Cracker &3tutorial!",
-            "&3This will show you the basics of how to play the game.",
+            "&3Welcome to the &eSafe Cracker &3tutorial! This will show you the basics of how to play the game.",
             "&3Safe Cracker is a &etrivia game &3that will test your knowledge about the server.",
             "&3You will start by searching for &eNPCs &3around the map, and answering the &equestions &3they will ask.",
             "&3When you find an NPC, &eright click &3it to reveal the question.",
             "&3Answering the questions is easy. All you have to do is &etype your answers in chat&3.",
             "&3To exit answering, you simply type '&ecancel&3' in chat. Go ahead! Try it out now by &etyping whatever you want in chat&3.",
-            "&eGreat! &3You now know how to answer questions. Next, you will check your answers to gain clues towards the &efinal riddle&3.",
+            "&eGreat! &3You now know how to answer questions. If you need help, use &c/safecracker hint &3to get a special hint book.",
+            "&3Next, you will check your answers to gain clues towards the &efinal riddle&3.",
             "&3You can do this by using &c/safecracker check&3, but don't do it now.",
             "&eClues &3will be applied to the lore in the GUI, so check there frequently for &ehints towards the final answer&3.",
             "&3Once you feel like you have correctly solved the riddle, you can use &c/safecracker solve <answer> &3to solve.",
