@@ -57,9 +57,9 @@ public class ChatEventListener implements Listener {
             getFiles().playerFile(event.getPlayer().getUniqueId()).set(npc + ".correct", null);
             getFiles().savePlayerData(event.getPlayer().getUniqueId());
             if(new CheckerGUI().isCorrect(event.getMessage(), npc)){
-                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&e " + correctResponses[(int) Math.ceil(Math.random() * correctResponses.length - 1)]));
+                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&a " + correctResponses[(int) Math.ceil(Math.random() * correctResponses.length - 1)]));
             } else {
-                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&e " + wrongResponses[(int) Math.ceil(Math.random() * wrongResponses.length - 1)]));
+                event.getPlayer().sendMessage(SafeCracker.colorize("&3&l" + playerChatMap.get(uuid) + ":&c " + wrongResponses[(int) Math.ceil(Math.random() * wrongResponses.length - 1)]));
             }
             playerChatMap.remove(uuid);
             event.setCancelled(true);
