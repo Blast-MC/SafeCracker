@@ -13,7 +13,7 @@ public class Tutorial extends BukkitRunnable {
     }
     public void run(){
         player.sendMessage(SafeCracker.colorize("&e[+] " + strings[i] + " &e(" + (i+1) + "/" + strings.length + ")" ));
-        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 2);
+        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 2);
         if (i == 5) {
             SafeCracker.getInstance().getCEL().tutorialMap.add(player.getUniqueId().toString());
             this.cancel();

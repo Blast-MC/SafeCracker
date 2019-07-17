@@ -70,7 +70,7 @@ public class AdminGUIProvider extends AdminGUI implements InventoryProvider {
             if(npc == null){
                 continue;
             }
-            ItemStack item = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e&l" + npc.getName()));
+            ItemStack item = nameItem(new ItemStack(Material.PLAYER_HEAD, 1, (short) 3), colorize("&e&l" + npc.getName()));
             ItemMeta meta = item.getItemMeta();
             ArrayList<String> lore = new ArrayList<>();
             lore.add(colorize("&rID: &o" + npc.getId()));

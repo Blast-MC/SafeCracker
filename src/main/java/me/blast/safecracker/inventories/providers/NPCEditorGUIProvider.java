@@ -24,7 +24,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
         String npc = SafeCracker.getInstance().adminEdit.get(player.getUniqueId().toString());
 
         //SKULL ITEM
-        ItemStack skull = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e" + npc));
+        ItemStack skull = nameItem(new ItemStack(Material.PLAYER_HEAD, 1, (short) 3), colorize("&e" + npc));
         ItemMeta skullMeta = skull.getItemMeta();
         SkullMeta skullSkullMeta = (SkullMeta) skullMeta;
         skullSkullMeta.setOwner(npc);
@@ -38,7 +38,7 @@ public class NPCEditorGUIProvider extends NPCEditorGUI implements InventoryProvi
         contents.set(0, 8, ClickableItem.empty(infoItem("Click any item to edit the info of the NPC, or click the teleport item to be teleported to the NPC.")));
 
         //QUESTION ITEM
-        ItemStack question = nameItem(new ItemStack(Material.BOOK_AND_QUILL), colorize("&eQuestion"));
+        ItemStack question = nameItem(new ItemStack(Material.WRITABLE_BOOK), colorize("&eQuestion"));
         ItemMeta questionMeta = question.getItemMeta();
         ArrayList<String> questionLore = new ArrayList<>();
         if(!getFiles().dataFile().get(npc.toLowerCase() + ".question").toString().equals("")){

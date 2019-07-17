@@ -7,3 +7,4 @@ commands:
     description: SafeCracker event command
     usage: /<command>
     aliases: [sc]
+api-version: 1.13

@@ -32,7 +32,7 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
         contents.set(0, 4, ClickableItem.of(checker, e -> {
             checkAnswers(player);
             openCheckerGUI(player);
-            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_PLING, 1, 1);
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
         }));
 
         ArrayList<ItemStack> foundItems = new ArrayList<>();
@@ -45,7 +45,7 @@ public class CheckerGUIProvider extends CheckerGUI implements InventoryProvider 
             if(npc == null){
                 continue;
             }
-            ItemStack item = nameItem(new ItemStack(Material.SKULL_ITEM, 1, (short) 3), colorize("&e&l" + npc.getName()));
+            ItemStack item = nameItem(new ItemStack(Material.PLAYER_HEAD, 1, (short) 3), colorize("&e&l" + npc.getName()));
             ItemMeta meta = item.getItemMeta();
             ArrayList<String> lore = new ArrayList<>();
             if(getFiles().playerFile(player.getUniqueId()).get(npcs + ".found") == null){
