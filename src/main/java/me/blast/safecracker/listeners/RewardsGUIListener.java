@@ -18,7 +18,7 @@ public class RewardsGUIListener implements Listener {
 
     @EventHandler
     public void savePlayerRewards(InventoryCloseEvent e){
-        if(!e.getInventory().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards"))){
+        if(!e.getView().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards"))){
             return;
         }
         Player player = (Player) e.getPlayer();
@@ -35,7 +35,7 @@ public class RewardsGUIListener implements Listener {
 
     @EventHandler
     public void saveRewards(InventoryCloseEvent e){
-        if(!e.getInventory().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards Edit"))){
+        if(!e.getView().getTitle().equals(SafeCracker.colorize("&3SafeCracker Rewards Edit"))){
             return;
         }
         Player player = (Player) e.getPlayer();
